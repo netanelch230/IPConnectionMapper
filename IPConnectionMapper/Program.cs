@@ -19,13 +19,7 @@ namespace IPConnectionManager
             JsonArray machines = new JsonArray();
             foreach (Host i in result.Hosts)
             {
-                Console.WriteLine("Host: {0}", i.Address);
-                if (i.OsMatches.Any())
-                {
-                    Console.WriteLine("and is probably running {0}", i.OsMatches.First().Name);
-                }
-                var ports = i.Ports.Select(p=>p.PortNumber).ToArray();
-                
+                var ports = i.Ports.Select(p=>p.PortNumber).ToArray();   
                 var machine = new JsonObject
                 {
                     ["ip"] = i.Address.ToString(),
