@@ -18,9 +18,22 @@ namespace IPConnectionManager
                 ConnectionMapper mapper = new ConnectionMapper();
                 mapper.Run();
             }
+            catch (ApplicationException ex)
+            {
+                if(ex.Message== "Path to nmap is invalid")
+                {
+                    //The console didn't update with the new value of PATH variable we added above,
+                    //so we need to run the program again to get the new value. 
+                    Console.WriteLine("The running of nmap failed, " +
+                        "probably its because the path of exe file didn't exist on environment variables, " +
+                        "run the program again can help ");
+                }
+                
+                Console.WriteLine(ex.Message);
+            }
             catch (Exception ex) 
             { 
-                Console.WriteLine(ex.ToString());
+                Console.WriteLine(ex.Message);
             }
             
         }

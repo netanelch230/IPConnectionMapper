@@ -20,7 +20,7 @@ namespace IPConnectionManager
             var ipAddressRange = GetIPRange();
             var target = new Target(ipAddressRange);
             Console.WriteLine("Initializing scan of {0}", target);
-
+            
             var hosts = new Scanner(target, System.Diagnostics.ProcessWindowStyle.Hidden).HostDiscovery();
             Console.WriteLine($"Found {hosts.Count()} machines");
 
